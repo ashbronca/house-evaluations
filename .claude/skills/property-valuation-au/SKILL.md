@@ -1,6 +1,6 @@
 ---
 name: property-valuation-au
-description: Estimate the market value of an Australian residential property given an address. Use this skill whenever the user provides a street address and wants to know what a property is worth, is considering making an offer on a house, wants to know if an asking price is fair, asks about suburb growth or property investment potential, or wants to research a specific property before buying. Invoke this skill even if the user just pastes an address without much explanation — if they're looking at a property, this skill is almost certainly what they need.
+description: Estimate the market value of an Australian residential property. Use this skill whenever the user provides a street address OR a realestate.com.au / domain.com.au URL and wants to know what a property is worth, is considering making an offer, wants to know if an asking price is fair, asks about suburb growth or investment potential, or wants to research a property before buying. Invoke this skill even if the user just pastes an address or listing URL without explanation — if they're sharing a property, this skill is almost certainly what they need.
 ---
 
 # Australian Residential Property Valuation
@@ -20,7 +20,9 @@ Use WebSearch and WebFetch to gather real, current data. Don't rely on memory fo
 
 ### Step 1 — Property Overview
 
-Search the address on Domain.com.au and realestate.com.au:
+If the user provided a realestate.com.au or domain.com.au URL, fetch that page directly first to extract property details. Otherwise search the address on both sites.
+
+Find:
 - Current listing (if active): asking price, days on market, agent name
 - Sale history: when was it last sold, for how much?
 - Property specs: bedrooms, bathrooms, car spaces, internal floor area (m²), land size (m²), build year, property type (house / townhouse / unit / duplex)
