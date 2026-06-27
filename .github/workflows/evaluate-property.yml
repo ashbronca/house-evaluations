@@ -1,0 +1,64 @@
+name: Evaluate Property
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'properties/*.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Find new property files
+        id: new_files
+        run: |
+          NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'properties/*.txt')
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEW" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "New files: $NEW"
+
+      - name: Run evaluations
+        if: steps.new_files.outputs.files != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            ADDRESS=$(cat "$file")
+            echo "=== Evaluating: $ADDRESS ==="
+            claude --dangerously-skip-permissions \
+              --output-format text \
+              -p "Evaluate this Australian property using the property-valuation-au skill. Save the analysis to the evaluations/ folder. Address: $ADDRESS"
+          done <<< "${{ steps.new_files.outputs.files }}"
+
+      - name: Commit and push evaluations
+        if: steps.new_files.outputs.files != ''
+        run: |
+          git config user.name "property-evaluator[bot]"
+          git config user.email "bot@users.noreply.github.com"
+          git add evaluations/
+          if git diff --cached --quiet; then
+            echo "No new evaluations to commit"
+          else
+            git commit -m "Add property evaluations [skip ci]"
+            git push origin main
+          fi

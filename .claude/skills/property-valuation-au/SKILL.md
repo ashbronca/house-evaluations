@@ -166,7 +166,7 @@ Based on everything above, give practical guidance for someone about to make an 
 
 ## Output Format
 
-**Default behaviour (all modes):** Write the full analysis to a Markdown file named `[suburb-address]-analysis.md` (e.g. `26-brookfield-rd-kedron-qld-analysis.md`) in the current working directory. After saving, confirm the filename to the user and display a concise summary (value range, confidence, and top 3 watchouts) inline. The full report lives in the file; the inline response is the executive summary only.
+**Default behaviour (all modes):** Write the full analysis to a Markdown file named `evaluations/[suburb-address]-analysis.md` (e.g. `evaluations/26-brookfield-rd-kedron-qld-analysis.md`). After saving, confirm the filename to the user and display a concise summary (value range, confidence, and top 3 watchouts) inline. The full report lives in the file; the inline response is the executive summary only.
 
 ### Quick Mode
 File content:
