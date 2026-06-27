@@ -20,7 +20,7 @@ Use WebSearch and WebFetch to gather real, current data. Don't rely on memory fo
 
 ### Step 1 — Property Overview
 
-If the user provided a realestate.com.au or domain.com.au URL, fetch that page directly first to extract property details. Otherwise search the address on both sites.
+If the user provided a realestate.com.au or domain.com.au URL, fetch that page directly first to extract property details. If the fetch fails (403 or blocked), immediately ask the user: "I can't access that listing directly — could you share the property address?" and wait for their reply before continuing. Otherwise search the address on both sites.
 
 Find:
 - Current listing (if active): asking price, days on market, agent name
