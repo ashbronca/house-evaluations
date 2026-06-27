@@ -26,6 +26,8 @@ Use WebSearch and WebFetch to gather real, current data. Don't rely on memory fo
 
 If the user provided a realestate.com.au or domain.com.au URL, fetch that page directly first to extract property details. If the fetch fails (403 or blocked), immediately ask the user: "I can't access that listing directly — could you share the property address?" and wait for their reply before continuing. Otherwise search the address on both sites.
 
+Always search realestate.com.au for the active listing using a WebSearch query like `site:realestate.com.au "426 Orange Grove Road" Salisbury`. If a listing page is found, attempt to fetch it. Extract asking price, inspection times, days on market, agent name and agency, listing description, and any photos described in the text.
+
 Find:
 - Current listing (if active): asking price, days on market, agent name
 - Sale history: when was it last sold, for how much?
@@ -172,7 +174,7 @@ Based on everything above, give practical guidance for someone about to make an 
 
 ## Output Format
 
-**Default behaviour (all modes):** Write the full analysis to a Markdown file named `evaluations/[suburb-address]-analysis.md` (e.g. `evaluations/26-brookfield-rd-kedron-qld-analysis.md`). Every report must open with a **Summary block** immediately after the title:
+**Default behaviour (all modes):** Write the full analysis to a Markdown file named `evaluations/[suburb-address]-analysis.md` (e.g. `evaluations/26-brookfield-rd-kedron-qld-analysis.md`). Every report must open with a **Summary block** immediately after the title, followed immediately by an **Inspection Guide** block before any other section.
 
 ```markdown
 ## Summary
@@ -190,6 +192,41 @@ Based on everything above, give practical guidance for someone about to make an 
 ```
 
 After saving, confirm the filename to the user and display the Summary block inline. The full report lives in the file; the inline response shows the summary only.
+
+### Inspection Guide (included in every detailed report, immediately after Summary)
+
+Generate a property-specific inspection checklist based on everything found in the research. This is not a generic list — tailor every item to what was discovered about this specific property (era, risk flags, road noise, flood overlay, condition signals from photos/description, etc.).
+
+Structure it as:
+
+```markdown
+## Inspection Guide
+
+> Bring this list to the physical inspection. Items marked 🔴 are potential deal-breakers or price-reduction triggers. Items marked 🟡 are things to photograph and note for follow-up or negotiation. Items marked 🟢 are positives to confirm in person.
+
+### Structure & Build
+- [Checklist items specific to this property's era/build type — e.g. asbestos, subfloor, roof condition]
+
+### Water & Drainage
+- [Items specific to flood overlay flags, overland flow, gutters, downpipes, water staining]
+
+### Noise & Amenity
+- [Items specific to road/flight/rail noise — visit at peak hours if on arterial road]
+
+### Interior Condition
+- [Room-by-room items based on known spec — e.g. single bathroom needing upgrade, kitchen era]
+
+### Exterior & Land
+- [Items specific to block size, orientation, fencing, driveway, easements]
+
+### Things to Photograph
+- [Specific list of what to capture for the post-inspection update to this report]
+
+### Questions to Ask On-Site
+- [Agent/vendor questions that can only be answered in person]
+```
+
+Tailor depth to what's known. If the property is brand new, skip asbestos. If it's on an arterial road, include a noise note. If there's an overland flow flag, include drainage items. Always end with a "Things to Photograph" list so findings can be added to the report after inspection.
 
 ### Quick Mode
 File content:
