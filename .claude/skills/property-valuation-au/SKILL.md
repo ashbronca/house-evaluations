@@ -14,6 +14,10 @@ The user can request either mode. Default to **detailed** if not specified.
 - **Quick** (`quick`): Value range, top drivers, 5 & 10 year projection, offer guidance. Aim to be thorough but concise.
 - **Detailed** (`detailed`): Full analysis across all sections below. This is the default.
 
+## Duplicate Check
+
+Before starting any research, derive the expected output filename (`evaluations/[slug]-analysis.md`) and check whether that file already exists. If it does, stop and tell the user: "I've already evaluated this property — the report is at `[filename]`." Do not re-run the analysis.
+
 ## Research Steps
 
 Use WebSearch and WebFetch to gather real, current data. Don't rely on memory for prices — markets move fast.
@@ -168,7 +172,24 @@ Based on everything above, give practical guidance for someone about to make an 
 
 ## Output Format
 
-**Default behaviour (all modes):** Write the full analysis to a Markdown file named `evaluations/[suburb-address]-analysis.md` (e.g. `evaluations/26-brookfield-rd-kedron-qld-analysis.md`). After saving, confirm the filename to the user and display a concise summary (value range, confidence, and top 3 watchouts) inline. The full report lives in the file; the inline response is the executive summary only.
+**Default behaviour (all modes):** Write the full analysis to a Markdown file named `evaluations/[suburb-address]-analysis.md` (e.g. `evaluations/26-brookfield-rd-kedron-qld-analysis.md`). Every report must open with a **Summary block** immediately after the title:
+
+```markdown
+## Summary
+
+| | |
+|-|-|
+| **Estimated value** | $X – $Y (midpoint **~$Z**) |
+| **Confidence** | High / Medium / Low — [one sentence why] |
+| **Verdict** | [One sentence: worth pursuing at asking price? what would you pay?] |
+
+**Top 3 watchouts:**
+1. [Most important risk or negative]
+2. [Second risk or negative]
+3. [Third risk or negative]
+```
+
+After saving, confirm the filename to the user and display the Summary block inline. The full report lives in the file; the inline response shows the summary only.
 
 ### Quick Mode
 File content:
