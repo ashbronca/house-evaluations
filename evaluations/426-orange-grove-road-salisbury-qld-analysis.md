@@ -15,7 +15,7 @@
 
 **Top 3 watchouts:**
 1. **Orange Grove Road is State Route 11** — a major urban arterial. Road noise and traffic are a permanent, unmitigatable negative that explains why properties here trade $250–350k below the suburb median
-2. **Flood check required** — Brisbane City Council FloodWise Property Report must be checked before offering; Salisbury has low-lying pockets near Oxley Creek
+2. **Overland flow path flag** — BCC FloodWise confirms no river/creek/storm tide risk (good news), but the property sits within an overland flow path; get an RPEQ drainage assessment before any renovation or building work
 3. **Single bathroom on a 3-bed** — limits appeal to families and will require renovation spend to unlock full value
 
 ---
@@ -124,9 +124,23 @@ Confirm the specific catchment for 426 OGR via EdMap (education.qld.gov.au) befo
 
 ### Flood & Natural Hazard
 
-⚠️ **Flood risk not confirmed for this specific property.** Salisbury has areas of elevated flood risk — particularly near Oxley Creek, which runs through the western side of the suburb. Orange Grove Road runs through the suburb north-south, and low-lying sections near creek crossings can carry medium-to-high flood overlay.
+**FloodWise Property Report reviewed (BCC Report Ref: 276202612494158, 27 Jun 2026).**
 
-**Mandatory action:** Generate a FloodWise Property Report for 426 OGR from Brisbane City Council at [fam.brisbane.qld.gov.au](https://fam.brisbane.qld.gov.au). This is non-negotiable before making any offer. A high or medium flood overlay could significantly affect insurance costs and re-sale appeal.
+| Flood source | Applicable? |
+|---|---|
+| Brisbane River flooding | ✅ No |
+| Creek / waterway flooding | ✅ No |
+| Storm tide / coastal hazard | ✅ No |
+| Overland flow path | ⚠️ Yes — flagged |
+
+**Property ground levels (LiDAR-derived):** Min 30.3m AHD / Max 32.8m AHD / Existing floor 33.6m AHD. Well elevated — consistent with the absence of river and creek flood risk.
+
+**Overland flow path flag:** BCC mapping indicates the property may sit within an overland flow path. This means stormwater can sheet across the property when the underground drainage system is exceeded during heavy rainfall events. This is significantly less severe than river or creek flooding — there is no assigned flood level and no habitable floor level requirement — but it does mean:
+- A Registered Professional Engineer of Queensland (RPEQ) assessment is recommended before any building or renovation work
+- Some insurers may note the flag; worth checking with your insurer pre-purchase
+- Not a deal-breaker, but factor it into renovation plans (drainage grading, impervious surface coverage)
+
+**Verdict on flood risk:** Materially better than feared. No river, creek or storm tide risk. The overland flow flag is a manageable constraint, not a serious hazard at a ground level of 30–32m AHD. This should not affect the offer price.
 
 Bushfire: Not applicable (inner urban suburb). Coastal: Not applicable.
 
@@ -254,7 +268,7 @@ Salisbury is firmly a seller's market (16 days on market, 0.56 months inventory)
 8. Does the property have working air conditioning? (relevant for road-noise mitigation via closed windows)
 
 ### Deal-Breaker Flags
-- Medium or high flood overlay — insurance costs and resale impact are material
+- ~~Flood overlay~~ — confirmed: no river/creek/storm tide risk. Overland flow flag present but manageable
 - Structural issues (subsidence, cracking) in a 1950s–70s build
 - Active development application nearby for high-density use that would further increase OGR traffic
 - Asbestos throughout without significant vendor price reduction
